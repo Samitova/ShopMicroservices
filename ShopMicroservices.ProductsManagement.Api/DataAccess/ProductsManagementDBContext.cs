@@ -22,6 +22,11 @@ public class ProductsManagementDBContext(DbContextOptions<ProductsManagementDBCo
                 Id = 2,
                 Name = "Books",
                 Description="Books for your fun" 
+            },
+            new Category {
+                Id = 3,
+                Name = "Games",
+                Description="Games for your fun"
             }
         ]);
         modelBuilder.Entity<Product>().HasData(
