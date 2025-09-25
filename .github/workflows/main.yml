@@ -30,6 +30,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
             push: true            
-            tags: ${{ secrets.ACR_LOGIN_SERVER }}/productsmanagementapi:${{github.run_id}}
+            tags: ${{secrets.ARC_LOGIN_SERVER}}/productsmanagementapi:${{github.run_id}}
             file: ./ShopMicroservices.ProductsManagement.Api/Dockerfile
      
