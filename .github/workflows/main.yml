@@ -23,16 +23,13 @@ jobs:
         with:
           login-server: ${{secrets.ARC_LOGIN_SERVER}}
           username: ${{secrets.ARC_USERNAME}}
-          password: ${{secrets.ARC_PASSWORD}}
-
-      - name: Get current date in yyyyMMdd format
-        run: echo "DATE_TIME = $(date + '%Y%m%d')" >> $GITHUB_ENV         
+          password: ${{secrets.ARC_PASSWORD}}  
 
       - name: "Build and push docker image"
         id: docker_build
         uses: docker/build-push-action@v5
         with:
             push: true
-            tags: ${{ secrets.ACR_LOGIN_SERVER }}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
+            tags: ${{ secrets.ACR_LOGIN_SERVER }}/products-management-api:${{github.run_number}}
             file: ./ShopMicroservices.ProductsManagement.Api/Dockerfile
      
