@@ -13,18 +13,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Azure Log In 
+      - name: Log In to Azure
         uses: azure/login@v1          
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
-          
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-    
-      - name: Restore dependencies
-        run: dotnet restore ./ShopMicroservices.ProductsManagement.Api/ShopMicroservices.ProductsManagement.Api.csproj
 
-      - name: Build
-        run: dotnet build ./ShopMicroservices.ProductsManagement.Api/ShopMicroservices.ProductsManagement.Api.csproj --configuration Release --no-restore
+      - name: Azure Log In to Azure Container Registry 
+        uses: azure/docker-login@v1          
+        with:
+          login-server: ${{secrets.ARC_LOGIN_SERVER}}
+          username: ${{secrets.ARC_USERNAME}}
+          password: ${{secrets.ARC_PASSWORD}}
+
+      - name: Get current date in yyyyMMdd format
+        run: echo "DATE_TIME = $(date + '%Y%m%d')" >> $GITHUB_ENV   
+
+      - name: Build and push container image
+        run: 
+            docker build src -f src/ShopMicroservices.ProductsManagement.Api/Dockerfile -t ${{secret.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
+            docker push ${{secret.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
+    
