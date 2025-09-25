@@ -30,6 +30,6 @@ jobs:
 
       - name: Build and push container image
         run: 
-            docker build src -f src/ShopMicroservices.ProductsManagement.Api/Dockerfile -t ${{secrets.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
+            docker build -f src/ShopMicroservices.ProductsManagement.Api/Dockerfile -t ${{secrets.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
             docker push ${{secrets.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
     
