@@ -26,10 +26,13 @@ jobs:
           password: ${{secrets.ARC_PASSWORD}}
 
       - name: Get current date in yyyyMMdd format
-        run: echo "DATE_TIME = $(date + '%Y%m%d')" >> $GITHUB_ENV   
+        run: echo "DATE_TIME = $(date + '%Y%m%d')" >> $GITHUB_ENV         
 
-      - name: Build and push container image
-        run: 
-            docker build -f src/ShopMicroservices.ProductsManagement.Api/Dockerfile -t ${{secrets.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
-            docker push ${{secrets.ARC_LOGIN_SERVER}}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
-    
+      - name: "Build and push docker image"
+        id: docker_build
+        uses: docker/build-push-action@v5
+        with:
+            push: true
+            tags: ${{ secrets.ACR_LOGIN_SERVER }}/products-management-api:${{env.DATE_TIME}}.${{github.run_number}}
+            file: ./ShopMicroservices.ProductsManagement.Api/Dockerfile
+     
