@@ -42,4 +42,5 @@ jobs:
             containerAppName: products-management
             resourceGroup: microservices-rg
             imageToDeploy: ${{secrets.ARC_LOGIN_SERVER}}/products-management-api:${{github.run_number}}
+            environmentVariables: Logging__LogLevel__Microsoft.EntityFrameworkCore=Debug
      
