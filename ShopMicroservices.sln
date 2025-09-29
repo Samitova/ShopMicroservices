@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36327.8 d17.14
+VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopMicroservices.ProductsManagement.Api", "ShopMicroservices.ProductsManagement.Api\ShopMicroservices.ProductsManagement.Api.csproj", "{5F1AE290-4601-4642-811D-F3BFBD66AAA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopMicroservices.OrdersManagement.Api", "ShopMicroservices.OrdersManagement.Api\ShopMicroservices.OrdersManagement.Api.csproj", "{72760BDF-4990-473D-9A96-DD61961D3EDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5F1AE290-4601-4642-811D-F3BFBD66AAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1AE290-4601-4642-811D-F3BFBD66AAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F1AE290-4601-4642-811D-F3BFBD66AAA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72760BDF-4990-473D-9A96-DD61961D3EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72760BDF-4990-473D-9A96-DD61961D3EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72760BDF-4990-473D-9A96-DD61961D3EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72760BDF-4990-473D-9A96-DD61961D3EDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
